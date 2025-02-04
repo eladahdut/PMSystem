@@ -2,7 +2,6 @@
 
 import { ID, Query } from 'node-appwrite';
 import { InputFile } from 'node-appwrite/file';
-
 import {
   BUCKET_ID,
   DATABASE_ID,
@@ -66,8 +65,8 @@ export const registerPatient = async ({
     if (identificationDocument) {
       const inputFile =
         identificationDocument &&
-        InputFile.fromPath(
-          identificationDocument?.get('blobFile') as any,
+        InputFile.fromBuffer(
+          identificationDocument?.get('blobFile') as Blob,
           identificationDocument?.get('fileName') as string
         );
 
